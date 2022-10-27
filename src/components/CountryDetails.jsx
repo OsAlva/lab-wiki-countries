@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-
+import {Link} from 'react-router-dom';
 function CountryDetails({countries}) {
 
     const {countryCode} = useParams();
@@ -23,7 +23,18 @@ function CountryDetails({countries}) {
                         <td>Area</td>
                         <td>{country.area} km
                             <sup>2</sup>
-                        </td>   
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Borders</td>
+                        
+                            <ul>
+                                {country.borders.map((border, index) => {
+                                    return  <li key={index}><Link to={`/${border}`}>{border}</Link></li>
+                                    
+                                })}
+                            </ul> 
+                         
                     </tr>
                     
                 </tbody>
